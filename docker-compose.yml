@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  genesis-training:
+    build: .
+    volumes:
+      - ./configs:/app/configs
+      - ./checkpoints:/app/checkpoints
+      - ./logs:/app/logs
+    environment:
+      - WANDB_API_KEY=${WANDB_API_KEY}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

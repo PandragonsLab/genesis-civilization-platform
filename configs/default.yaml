@@ -1,0 +1,22 @@
+# GENESIS Platform Default Configuration
+experiment:
+  name: "basic_civilization_emergence"
+  description: "Default experiment configuration"
+  
+world:
+  type: "archipelago"
+  grid_size: [20, 20]
+  num_islands: 8
+  
+agents:
+  population_size: 32
+  specializations_per_agent: 2
+  
+training:
+  num_generations: 100
+  episodes_per_generation: 50
+  episode_length: 1000
+  
+logging:
+  level: "INFO"
+  wandb_project: "genesis_civilization"
